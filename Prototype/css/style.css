@@ -1,0 +1,156 @@
+*{
+  margin: 0px;
+  padding: 0px;
+}
+
+body{
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: white;
+  font-size: 14px;
+  line-height: 1.6em;
+  margin: 0px;
+}
+
+#main_header{
+  width: 100%;
+  background-color: #155CE9;
+  color : white;
+  text-align: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.header2{
+  width: 20%;
+  margin: 50px auto 0px;
+  color: white;
+  background: #155CE9;
+  text-align: center;
+  border: 1px solid #B0C4DE;
+  border-bottom: none;
+  border-radius: 10px 10px 0px 0px;
+  padding: 20px;
+}
+
+form, content{
+  width: 20%;
+  margin: 0px auto;
+  padding: 20px;
+  border: 1px solid #B0C4DE;
+  background: white;
+  border-radius: 0px 0px 10px 10px;
+}
+
+.input-group{
+  margin: 10px 0px 10px 0px;
+}
+
+.input-group label{
+  display: block;
+  text-align: left;
+  margin: 3px;
+}
+
+.input-group input {
+  height: 30px;
+  width: 93%;
+  padding: 5px 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid gray;
+}
+
+.btn {
+  padding: 10px;
+  font-size: 15px;
+  color: white;
+  margin-left: 3px;
+  background: #155CE9;
+  text-align: center;
+  border: none;
+  border-radius: 5px;
+}
+
+#main_footer{
+  position:absolute;
+  bottom:0;
+  height:40px;   /* Height of the footer */
+  width: 100%;
+  background-color: #155CE9;
+  color : black;
+  text-align: center;
+}
+
+nav{
+  width: 100%;
+  float: left;
+}
+
+ul{
+  margin: 0px;
+  padding: 0px;
+  list-style: none;
+}
+
+ul li{
+  float: left;
+  width: 19.85%;
+  height: 40px;
+  background-color: black;
+  opacity: .8;
+  line-height: 40px;
+  text-align: center;
+  font-size: 16px;
+  border: 1px solid green;
+  border-bottom: 2px solid green;
+}
+
+ul li a{
+  text-decoration: none;
+  color: white;
+  display: black;
+  height: 40px;
+  width: 20%;
+}
+
+ul li:hover{
+  background-color: green;
+}
+
+.header_new_item{
+  width: 20%;
+  margin: 80px auto 0px;
+  color: white;
+  background: #155CE9;
+  text-align: center;
+  border: 1px solid #B0C4DE;
+  border-bottom: none;
+  border-radius: 10px 10px 0px 0px;
+  padding: 20px;
+}
+
+/*.new_item_form form .content{
+  width: 30%;
+  margin: 0px auto;
+  padding: 20px;
+  border: 1px solid #B0C4DE;
+  background: white;
+  border-radius: 0px 0px 10px 10px;
+}*/
+.new-item-group{
+  margin: 10px 10px 10px 0px;
+}
+
+.new-item-group label{
+  margin: 3px;
+}
+
+.new-item-group input {
+  float: right;
+  height: 15px;
+  width: 55%;
+  padding: 5px 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid gray;
+}
