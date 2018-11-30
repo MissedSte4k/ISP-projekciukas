@@ -1,4 +1,6 @@
-
+<?php
+if (isset($form) && isset($session) && $session->logged_in) {
+?>
   <div class="header_new_item">
     <h2>Daikto paieškos forma</h2>
   </div>
@@ -44,3 +46,4 @@
       <button type="submit" name="ieskoti" class="btn">Ieškoti!</button>
     </div>
     </form>
+<?php } ?>
