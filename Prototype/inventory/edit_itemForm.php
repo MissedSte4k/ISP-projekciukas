@@ -1,43 +1,101 @@
 <?php
 if (isset($form) && isset($session) && $session->logged_in) {
+  function getItemsCodes()
+  {
+    global $database;
+    $q = "SELECT daiktas.Kodas "
+            . "FROM daiktas";
+    $result = $database->query($q);
+    $num_rows = mysqli_num_rows($result);
+    for ($i = 0; $i < $num_rows; $i++)
+        {
+         $itemID = mysqli_result($result, $i, "Kodas");
+         echo"<option value=\"$itemID\">$itemID</option>";
+       }
+  }
+
+  function getStorages(){
+    global $database;
+    $q = "SELECT * "
+            . "FROM patalpa";
+    $result = $database->query($q);
+    $num_rows = mysqli_num_rows($result);
+    for ($i = 0; $i < $num_rows; $i++)
+        {
+         $storageID = mysqli_result($result, $i, "Id");
+         $storageName = mysqli_result($result, $i, "Pavadinimas");
+         echo"<option value=\"$storageID\">$storageName</option>";
+       }
+     }
+
 ?>
   <div class="header_new_item">
     <h2>Daikto redagavimo forma</h2>
   </div>
-  <form method="post" action="edit_item.php" name="new_item_form">
+  <form method="POST" action="inventory_process.php" name="new_item_form">
     <div class="new-item-group">
       <label>Kodas</label>
-      <input type="text" name="kodas">
+      <select type="text" name="kodas" text-align="right">
+        <option value="">------------------------</option>
+        <?php getItemsCodes(); ?>
+      </select>
+    <?php echo $form->error("kodas");?>
     </div>
     <div class="new-item-group">
       <label>Pavadinimas</label>
-      <input type="text" name="pavadinimas">
+      <input type="text" name="pavadinimas" value="<?php echo $form->value("pavadinimas"); ?>"/>
+        <?php echo $form->error("pavadinimas");?>
     </div>
     <div class="new-item-group">
       <label>Tipas</label>
-      <input type="text" name="tipas">
+      <select type="text" name="tipas" text-align="right">
+        <option value="">------------------------</option>
+        <option value="Buitine technika">Buitinė technika</option>
+        <option value="Ginklai">Ginklai</option>
+        <option value="Baldai">Baldai</option>
+        <option value="Virtuves irankiai">Virtuvės įrankiai</option>
+        <option value="Stalo irankiai">Stalo įrankiai</option>
+        <option value="Buities irankiai">Buities įrankiai</option>
+      </select>
+      <?php echo $form->error("tipas");?>
     </div>
     <div class="new-item-group">
       <label>Būklė</label>
-      <input type="text" name="bukle">
+      <select type="text" name="bukle" text-align="right">
+        <option value="">------------------------</option>
+        <option value="Puiki">Puiki</option>
+        <option value="Gera">Gera</option>
+        <option value="Patenkinama">Patenkinama</option>
+        <option value="Sugadintas(-a)">Sugadintas(-a)</option>
+        <option value="Taisytas(-a)">Taisytas(-a)</option>
+      </select>
+      <?php echo $form->error("bukle");?>
     </div>
     <div class="new-item-group">
       <label>Gavimo data</label>
-      <input type="datetime-local" name="gavimo_data">
+      <input type="date" name="gavimo_data" value="<?php echo $form->value("gavimo_data");?>"/>
+      <?php echo $form->error("gavimo_data");?>
     </div>
     <div class="new-item-group">
       <label>Kaina</label>
-      <input type="number" min="0.00" max="1000000.00" step="0.01" name="kaina">
+      <input type="number" min="0.00" max="1000000.00" step="0.01" name="kaina"/>
+      <?php echo $form->error("kaina");?>
     </div>
     <div class="new-item-group">
       <label>Spalva</label>
-      <input type="text" name="spalva">
+      <input type="text" name="spalva" value="<?php echo $form->value("spalva"); ?>"/>
+      <?php echo $form->error("spalva");?>
     </div>
     <div class="new-item-group">
       <label>Patalpa</label>
-      <input type="text" name="patalpa">
+      <select type="text" name="patalpa" text-align="right">
+      <option value="">------------------------</option>
+      <?php getStorages(); ?>
+      </select>
+      <?php echo $form->error("patalpa");?>
     </div>
     <div class="new-item-group">
+      <input type="hidden" name="subedititem" value="1"/>
       <button type="submit" name="redaguoti" class="btn">Redaguoti!</button>
     </div>
   </form>

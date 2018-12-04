@@ -5,14 +5,14 @@ include("include/session.php");
     <head>
         <meta http-equiv="X-UA-Compatible" content="IE=9; text/html; charset=utf-8"/>
         <title>Lukiškių kalėjimas</title>
-        <link href="css/style.css" rel="stylesheet" type="text/css"/>
+        <link href="css/style.css" rel="stylesheet" type="text/css" />
     </head>
     <body>
             <?php include("include/header.php")?>
             <?php
             //Jei vartotojas prisijungęs ir jis yra pulto valdytojas
             if ($session->logged_in && $session->isPultoValdytojas()) {
-                  header('Location: main_pulto_valdymas.php');
+                  header('Location: Valdiklis.php');
                 ?>
 
                 <?php

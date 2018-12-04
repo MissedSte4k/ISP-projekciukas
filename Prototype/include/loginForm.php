@@ -1,6 +1,3 @@
-<?php
-if (isset($form) && isset($session) && $session->logged_in) {
-?>
     <div class="header2">
     <h2>Prisijunkite prie IS</h2>
     </div>

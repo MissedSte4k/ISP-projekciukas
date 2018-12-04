@@ -14,12 +14,12 @@ include("include/session.php");
         </div>
       </header>
                 <?php include("include/inventoryMeniu.php");
-
                 ?>
                 <div style="text-align: center;color:green">
-                    <br><br><br><br><br><br><br><br>
+                    <br><br><br><br><br><br><br><br><br><br><br><br><br>
                     <h1>Sveiki, atvykę į Lukiškių kalėjimo informacinę sistemą.</h1>
-                </div><br>
+                </div><br><br><br><br><br><br><br>
+
               <?php  include("include/footer.php");?>
 </body>
 </html>

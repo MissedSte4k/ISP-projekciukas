@@ -125,8 +125,9 @@ class Session {
 
         /* Checks that username is in database and password is correct */
         $subuser = stripslashes($subuser);
-        $result = $database->confirmUserPass($subuser, md5($subpass));
 
+        $result = $database->confirmUserPass($subuser, md5($subpass));
+    
         /* Check error codes */
         if ($result == 1) {
             $field = "user";
