@@ -13,8 +13,7 @@ if ($session->logged_in) {
 
 	$a = (string)$_POST['param2'];
 	
-	global $database;
-	$dbc=$database;
+	$dbc=mysqli_connect('localhost','simpas2', 'ahX5Waiwiec8ango','simpas2');
 	if(!$dbc){die ("Negaliu prisijungti prie MySQL:" .mysqli_error($dbc)); }
 	$sql = "SELECT * FROM Blokai WHERE Pavadinimas = \"$a[0]\"";
 echo "<script>

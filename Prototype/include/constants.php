@@ -21,7 +21,7 @@ define("DB_NAME", "simpas2");
  * hold the names of all the database tables used
  * in the script.
  */
-define("TBL_USERS", "Vartotojas");
+define("TBL_USERS", "Vartotojai");
 define("TBL_EVENT", "uzsiemimas");
 define("TBL_TIMETABLE", "tvarkarastis");
 

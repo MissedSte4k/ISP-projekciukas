@@ -17,8 +17,7 @@ console.log($ar[0]);
 </script>";
 
 $a = intval($_COOKIE["item"]);
-global $database;
-	$dbc=$database;
+$dbc=mysqli_connect('localhost','simpas2', 'ahX5Waiwiec8ango','simpas2');
 if(!$dbc){die ("Negaliu prisijungti prie MySQL:" .mysqli_error($dbc)); }
 $time2 = strtotime($_POST['galioja_iki']);
 

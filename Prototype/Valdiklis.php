@@ -16,6 +16,8 @@ if ($session->logged_in) {
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link href="css/style.css" rel="stylesheet" type="text/css"/>
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <meta http-equiv="refresh" content="50" />
@@ -25,20 +27,12 @@ if ($session->logged_in) {
 
 <div class="jumbotron text-center" style="padding-top: 12px; padding-bottom: 12px;" >
   <h1>Durų valdymas</h1>
-</div>
-	<div class="container">
-  <div class="row">
-	   <div class="col-lg-12">
-		 <input type="button" style="float: right;" class="btn btn-light" name="cards" id="cards" value="Kortelės" onClick="document.location.href='korteles.php'"/><br/>
-		 </div>
-		</div>
-		</div>
+  <?php include("include/pultoValdymasMeniu.php");?>
 <div class="container">
   <div class="row">
     <div class="col-sm-4"  
 		 <?php
-	global $database;
-	$dbc=$database;
+	$dbc=mysqli_connect('localhost','simpas2', 'ahX5Waiwiec8ango','simpas2');
 	if(!$dbc){die ("Negaliu prisijungti prie MySQL:" .mysqli_error($dbc)); }
 
 	$sql = "SELECT * FROM Blokai";
@@ -97,10 +91,7 @@ if ($session->logged_in) {
 			</div>
 	<div class="col-sm-2">
 	  <?php
-	global $database;
-	$dbc=$database;
-	if(!$dbc){die ("Negaliu prisijungti prie MySQL:" .mysqli_error($dbc)); }
-
+	
 	$sql = "SELECT * FROM Vartai";
     $result = mysqli_query($dbc, $sql);  
 $cnt = 0;
@@ -136,9 +127,7 @@ while($row = mysqli_fetch_assoc($result))
 		
     <div class="col-sm-4" 
 		 <?php
-	global $database;
-	$dbc=$database;
-	if(!$dbc){die ("Negaliu prisijungti prie MySQL:" .mysqli_error($dbc)); }
+
 
 	$sql = "SELECT * FROM Blokai";
     $result = mysqli_query($dbc, $sql);  
@@ -196,9 +185,6 @@ while($row = mysqli_fetch_assoc($result))
 			</div>
 	<div class="col-sm-2">
 	  <?php
-	global $database;
-	$dbc=$database;
-	if(!$dbc){die ("Negaliu prisijungti prie MySQL:" .mysqli_error($dbc)); }
 
 	$sql = "SELECT * FROM Vartai";
     $result = mysqli_query($dbc, $sql);  
@@ -234,10 +220,7 @@ while($row = mysqli_fetch_assoc($result))
 	
   </div>
 	  <div class="col-sm-4" <?php
-	global $database;
-	$dbc=$database;
-	if(!$dbc){die ("Negaliu prisijungti prie MySQL:" .mysqli_error($dbc)); }
-
+	
 	$sql = "SELECT * FROM Blokai";
     $result = mysqli_query($dbc, $sql);  
 	$cnt = 0;   
@@ -294,9 +277,6 @@ while($row = mysqli_fetch_assoc($result))
 			</div>
 	<div class="col-sm-2">
 	  <?php
-	global $database;
-	$dbc=$database;
-	if(!$dbc){die ("Negaliu prisijungti prie MySQL:" .mysqli_error($dbc)); }
 
 	$sql = "SELECT * FROM Vartai";
     $result = mysqli_query($dbc, $sql);  
@@ -408,6 +388,12 @@ while($row = mysqli_fetch_assoc($result))
     });
 		location.reload();
     }
+
+	/*$( "#atsijungti" ).click(logout() {
+  alert( "Handler for .click() called." );
+});*/
+	
+ 
 	
 </script>
 	

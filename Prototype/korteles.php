@@ -18,27 +18,14 @@ if ($session->logged_in) {
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
+  <link href="css/style.css" rel="stylesheet" type="text/css"/>
 
 </head>
 <body>
 
 <div class="jumbotron text-center" style="padding-top: 12px; padding-bottom: 12px;" >
   <h1>Kortelės</h1>
-</div>
-	<div class="container">
-  <div class="row">
-	  <div class="col-sm-4">
-		 <input type="button" class="btn btn-light" name="kurti" id="kurti" value="Kurti naują kortelę" onClick="document.location.href='nauja.php'" /><br/>
-		 </div>
-	   <div class="col-sm-4">
-		 <input type="button" class="btn btn-light" name="istorija" id="istorija" value="Kortelių veiklos istorija" onClick="document.location.href='korteliu-istorija.php'" /><br/>
-		 </div>
-	  <div class="col-sm-4">
-	  <input type="button" class="btn btn-light" name="kalejimas" id="kalejimas" value="Kalėjimas" onClick="document.location.href='Valdiklis.php'" /><br/>
-		</div>
-	  </div>
-  </div>
+  <?php include("include/pultoValdymasMeniu.php");?>
 <table class="table">
   <thead>
     <tr>
@@ -53,8 +40,7 @@ if ($session->logged_in) {
   <tbody>
     <?php
 
-global $database;
-	$dbc=$database;
+$dbc=mysqli_connect('localhost','simpas2', 'ahX5Waiwiec8ango','simpas2');
 if(!$dbc){die ("Negaliu prisijungti prie MySQL:" .mysqli_error($dbc)); }
 $sql = "SELECT * FROM Korteles";
     $result = mysqli_query($dbc, $sql);  

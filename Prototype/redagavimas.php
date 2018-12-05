@@ -25,28 +25,14 @@ if ($session->logged_in) {
 
 <div class="jumbotron text-center" style="padding-top: 12px; padding-bottom: 12px;" >
   <h1>Nauja kortelė</h1>
-</div>
-	<div class="container" style="padding-bottom: 12px;">
-  <div class="row">
-	  <div class="col-lg-4">
-		 <input type="button" class="btn btn-light" name="kurti" id="kurti" value="Kortelės" onClick="document.location.href='korteles.php'" /><br/>
-		 </div>
-	   <div class="col-lg-4">
-		 <input type="button" class="btn btn-light" name="istorija" id="istorija" value="Kortelių veiklos istorija" onClick="document.location.href='korteliu-istorija.php'" /><br/>
-		 </div>
-	  <div class="col-lg-4">
-	  <input type="button" class="btn btn-light" name="kalejimas" id="kalejimas" value="Kalėjimas" onClick="document.location.href='Valdiklis.php'" /><br/>
-		</div>
-	  </div>
-  </div>
+  <?php include("include/pultoValdymasMeniu.php");?>
 <form>
   <div class="form-group col-lg-6">
    	<select class="row" style="margin: 15px">
   	<option selected>Būsimas kortelės savininkas</option>
 		<?php
 
-global $database;
-	$dbc=$database;
+$dbc=mysqli_connect('localhost','simpas2', 'ahX5Waiwiec8ango','simpas2');
 if(!$dbc){die ("Negaliu prisijungti prie MySQL:" .mysqli_error($dbc)); }
 
 
@@ -70,8 +56,7 @@ if(!$dbc){die ("Negaliu prisijungti prie MySQL:" .mysqli_error($dbc)); }
     <option value="5">5</option>
 		<?php
 
-global $database;
-	$dbc=$database;
+$dbc=mysqli_connect('localhost','simpas2', 'ahX5Waiwiec8ango','simpas2');
 if(!$dbc){die ("Negaliu prisijungti prie MySQL:" .mysqli_error($dbc)); }
 
 
@@ -85,14 +70,7 @@ if(!$dbc){die ("Negaliu prisijungti prie MySQL:" .mysqli_error($dbc)); }
 	  
 
 
-    <?php
-
-global $database;
-	$dbc=$database;
-if(!$dbc){die ("Negaliu prisijungti prie MySQL:" .mysqli_error($dbc)); }
-
-
-?>
+  
 	
   
 </body>

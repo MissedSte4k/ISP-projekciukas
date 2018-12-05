@@ -19,27 +19,14 @@ if ($session->logged_in) {
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
+  <link href="css/style.css" rel="stylesheet" type="text/css"/>
 
 </head>
 <body>
 
 <div class="jumbotron text-center" style="padding-top: 12px; padding-bottom: 12px;" >
   <h1>Redaguoti kortele</h1>
-</div>
-	<div class="container" style="padding-bottom: 12px;">
-  <div class="row">
-	  <div class="col-sm-4">
-		 <input type="button" class="btn btn-light" name="kurti" id="kurti" value="Kortelės" onClick="document.location.href='korteles.php'" /><br/>
-		 </div>
-	   <div class="col-sm-4">
-		 <input type="button" class="btn btn-light" name="istorija" id="istorija" value="Kortelių veiklos istorija" onClick="document.location.href='korteliu-istorija.php'" /><br/>
-		 </div>
-	  <div class="col-sm-4">
-	  <input type="button" class="btn btn-light" name="kalejimas" id="kalejimas" value="Kalėjimas" onClick="document.location.href='Valdiklis.php'" /><br/>
-		</div>
-	  </div>
-  </div>
+	<?php include("include/pultoValdymasMeniu.php");?>
 <form action="editKorteleAction.php" method="post">
   <div class="form-group col-lg-6">
    	<select class="row" name="savininkas" style="margin: 15px">
@@ -59,8 +46,7 @@ console.log($a);
 </script>";
 		
 		
-global $database;
-	$dbc=$database;
+$dbc=mysqli_connect('localhost','simpas2', 'ahX5Waiwiec8ango','simpas2');
 if(!$dbc){die ("Negaliu prisijungti prie MySQL:" .mysqli_error($dbc)); }
 		
 $sql = 	"SELECT *
