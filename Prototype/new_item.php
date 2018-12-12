@@ -22,8 +22,9 @@ if ($session->logged_in) {
               <h1>Inventoriaus valdymas</h1>
             </div>
           </header>
+
                     <?php include("include/inventoryMeniu.php");
-                    include("inventory/new_itemForm.php");
+                      include("inventory/new_itemForm.php");
                     ?>
                   <?php  include("include/footer.php");?>
     </body>

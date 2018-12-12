@@ -1,5 +1,5 @@
 <?php
-if (isset($form) && isset($session) && $session->logged_in) {
+if (isset($sucs) && isset($form) && isset($session) && $session->logged_in) {
   function getStorages(){
     global $database;
     $q = "SELECT * "
@@ -18,6 +18,7 @@ if (isset($form) && isset($session) && $session->logged_in) {
     <h2>Naujo daikto registravimo forma</h2>
   </div>
   <form method="POST" action="inventory_process.php" name="new_item_form">
+    <?php echo $sucs->msg("msg"); ?>
     <div class="new-item-group">
       <label>Pavadinimas</label>
       <input type="text" name="pavadinimas" value="<?php echo $form->value("pavadinimas"); ?>"/>

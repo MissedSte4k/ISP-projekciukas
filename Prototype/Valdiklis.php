@@ -32,7 +32,7 @@ if ($session->logged_in) {
   <div class="row">
     <div class="col-sm-4"  
 		 <?php
-	$dbc=mysqli_connect('localhost','simpas2', 'ahX5Waiwiec8ango','simpas2');
+	$dbc=mysqli_connect(DB_SERVER, DB_USER, DB_PASS, DB_NAME);
 	if(!$dbc){die ("Negaliu prisijungti prie MySQL:" .mysqli_error($dbc)); }
 
 	$sql = "SELECT * FROM Blokai";

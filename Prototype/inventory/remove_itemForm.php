@@ -3,14 +3,15 @@ if (isset($form) && isset($session) && $session->logged_in) {
   function getItemsCodes()
   {
     global $database;
-    $q = "SELECT daiktas.Kodas "
+    $q = "SELECT daiktas.Kodas, daiktas.Pavadinimas "
             . "FROM daiktas";
     $result = $database->query($q);
     $num_rows = mysqli_num_rows($result);
     for ($i = 0; $i < $num_rows; $i++)
         {
          $itemID = mysqli_result($result, $i, "Kodas");
-         echo"<option value=\"$itemID\">$itemID</option>";
+         $itemName = mysqli_result($result, $i, "Pavadinimas");
+         echo"<option value=\"$itemID\">$itemID-$itemName</option>";
        }
   }
 ?>
@@ -18,6 +19,7 @@ if (isset($form) && isset($session) && $session->logged_in) {
     <h2>Daikto šalinimas</h2>
   </div>
   <form method="POST" action="inventory_process.php" name="new_item_form">
+    <?php echo $sucs->msg("msg"); ?>
     <div class="new-item-group">
       <label>Kodas</label>
       <select type="text" name="kodas">

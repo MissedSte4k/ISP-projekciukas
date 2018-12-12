@@ -36,6 +36,7 @@ if (isset($form) && isset($session) && $session->logged_in) {
     <h2>Daikto išdavimo forma</h2>
   </div>
   <form method="post" action="inventory_process.php" name="new_item_form">
+    <?php echo $sucs->msg("msg"); ?>
     <div class="new-item-group">
       <label>Išdavimo nr.</label>
       <input type="number" min="1" max= "1000000" name="registracijos_nr"/>

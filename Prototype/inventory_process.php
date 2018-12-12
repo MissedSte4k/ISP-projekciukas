@@ -34,7 +34,7 @@ class ManagerProcess
 
     function addItem()
     {
-      global $session, $database, $form;
+      global $session, $database, $form, $sucs;
       $itemName = $_POST['pavadinimas'];
       $itemType = $_POST['tipas'];
       $itemStatus = $_POST['bukle'];
@@ -53,6 +53,9 @@ class ManagerProcess
       }
 
       else{
+        $field="msg";
+        $sucs->setMsg($field, "Registracija sėkminga!");
+        $_SESSION['msg_array'] = $sucs->getMsgArray();
         $q = "INSERT INTO daiktas
                VALUES ('$itemName', '', '$itemDate', '$itemPrice', '$itemColor',
                       '$itemType', '$itemStatus', '$itemSotrage')";
@@ -71,8 +74,8 @@ class ManagerProcess
       else
       {
         $itemName  = stripslashes($itemName);
-        if (strlen($itemName) < 5) {
-            $form->setError($field, "* Daikto pavadinimas turi turėti nemažiau kaip 5 simbolius");
+        if (strlen($itemName) < 4) {
+            $form->setError($field, "* Daikto pavadinimas turi turėti nemažiau kaip 4 simbolius");
         }
         else if (strlen($itemName) > 20) {
             $form->setError($field, "* Daikto pavadinimas virš 20 simbolių");
@@ -105,7 +108,7 @@ class ManagerProcess
 
     function editItem()
     {
-      global $session, $database, $form;
+      global $session, $database, $form, $sucs;
       $itemID = $_POST['kodas'];
       $itemName = $_POST['pavadinimas'];
       $itemType = $_POST['tipas'];
@@ -125,6 +128,9 @@ class ManagerProcess
       }
 
       else{
+        $field="msg";
+        $sucs->setMsg($field, "Redagavimas atliktas!");
+        $_SESSION['msg_array'] = $sucs->getMsgArray();
         $q = "UPDATE daiktas SET Pavadinimas = '$itemName', Gavimo_data='$itemDate',
               Kaina='$itemPrice', Spalva = '$itemColor', Tipas = '$itemType',
               Bukle = '$itemStatus', fk_PatalpaId = '$itemSotrage' WHERE Kodas = '$itemID'";
@@ -147,8 +153,8 @@ class ManagerProcess
       else
       {
         $itemName  = stripslashes($itemName);
-        if (strlen($itemName) < 5) {
-            $form->setError($field, "* Daikto pavadinimas turi turėti nemažiau kaip 5 simbolius");
+        if (strlen($itemName) < 4) {
+            $form->setError($field, "* Daikto pavadinimas turi turėti nemažiau kaip 4 simbolius");
         }
         else if (strlen($itemName) > 20) {
             $form->setError($field, "* Daikto pavadinimas virš 20 simbolių");
@@ -181,7 +187,7 @@ class ManagerProcess
 
     function removeItem()
     {
-      global $session, $form, $database;
+      global $session, $form, $database, $sucs;
       $itemID = $_POST['kodas'];
       $errors = $this->checkRemoveItemInput($itemID);
       if($errors > 0)
@@ -193,6 +199,9 @@ class ManagerProcess
       }
 
       else{
+        $field="msg";
+        $sucs->setMsg($field, "Daiktas pašalintas!");
+        $_SESSION['msg_array'] = $sucs->getMsgArray();
         $q = "DELETE FROM daiktas WHERE daiktas.Kodas = '$itemID'";
         $result = $database->query($q);
         header("Location: " . $session->referrer);
@@ -211,7 +220,7 @@ class ManagerProcess
 
     function giveItem()
     {
-      global $session, $form, $database;
+      global $session, $form, $database, $sucs;
       $registrationCode = $_POST['registracijos_nr'];
       //var_dump($registrationCode);
       //die();
@@ -229,6 +238,9 @@ class ManagerProcess
       }
 
       else{
+        $field="msg";
+        $sucs->setMsg($field, "Daikto išdavimas užregistruotas!");
+        $_SESSION['msg_array'] = $sucs->getMsgArray();
         $q = "INSERT INTO registracija
                VALUES ('$registrationCode', '', '$givingDate', '$receivingDate', '$itemID',
                       '$workerID')";
@@ -259,8 +271,9 @@ class ManagerProcess
       }
 
       $q = "SELECT * "
-              . "FROM registracija WHERE registracija.Pridavimo_d == NULL
-                  AND registracija.fk_DaiktasKodas = '$itemID'";
+              . "FROM registracija WHERE registracija.Pridavimo_d = '0000-00-00'
+                  AND registracija.fk_DaiktasKodas = $itemID";
+
       $result = $database->query($q);
       $num_rows = mysqli_num_rows($result);
       if($num_rows > 0)
