@@ -203,12 +203,7 @@ return $string;
 	
 	$ar = $tr->get_integers(5, 1000000, 9999999, 10);
 	
-	phpinfo();
-    
-	var_dump($ar);
-	die();
-
-
+	
 	$dbc=mysqli_connect(DB_SERVER, DB_USER, DB_PASS, DB_NAME);
 if(!$dbc){die ("Negaliu prisijungti prie MySQL:" .mysqli_error($dbc)); }
 $id=$ar[0];
@@ -238,14 +233,14 @@ if(mysqli_query($dbc, $sql)){
 <meta http-equiv="refresh" content="0; url=korteles.php" />
 <?php
 	echo "Records were updated successfully.";
-	//<meta http-equiv="refresh" content="0; url=korteles.php" />
+	<meta http-equiv="refresh" content="0; url=korteles.php" />
 } else {
     echo "ERROR: Could not able to execute $sql. " . mysqli_error($dbc);
 	?>
 	<meta http-equiv="refresh" content="0; url=nauja.php" />
 <?php
 	echo "ERROR: Could not able to execute $sql. " . mysqli_error($dbc);
-	//<meta http-equiv="refresh" content="0; url=nauja.php" />
+	<meta http-equiv="refresh" content="0; url=nauja.php" />
 }	
 
 ?>
