@@ -233,14 +233,14 @@ if(mysqli_query($dbc, $sql)){
 <meta http-equiv="refresh" content="0; url=korteles.php" />
 <?php
 	echo "Records were updated successfully.";
-	<meta http-equiv="refresh" content="0; url=korteles.php" />
+	//<meta http-equiv="refresh" content="0; url=korteles.php" />
 } else {
     echo "ERROR: Could not able to execute $sql. " . mysqli_error($dbc);
 	?>
 	<meta http-equiv="refresh" content="0; url=nauja.php" />
 <?php
 	echo "ERROR: Could not able to execute $sql. " . mysqli_error($dbc);
-	<meta http-equiv="refresh" content="0; url=nauja.php" />
+	//<meta http-equiv="refresh" content="0; url=nauja.php" />
 }	
 
 ?>
