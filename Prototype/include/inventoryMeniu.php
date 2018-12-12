@@ -9,8 +9,7 @@ if (isset($session) && $session->logged_in) {
     ?>
     <table width=100% border="0" cellspacing="1" cellpadding="3" class="meniu">
         <?php
-        echo "Prisijungęs vartotojas: <b>$session->username</b> <br>";
-        echo "</td></tr><tr><td>";
+        echo "Prisijungęs vartotojas: <b>$session->username</b><br>";
         echo "[<a href=\"" . $path . "process.php\">Atsijungti</a>]";
         echo "</td></tr>";
         ?>

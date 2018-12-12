@@ -12,8 +12,8 @@
  * correct.
  */
 define("DB_SERVER", "localhost");
-define("DB_USER", "simpas2");
-define("DB_PASS", "ahX5Waiwiec8ango");
+define("DB_USER", "root");
+define("DB_PASS", "");
 define("DB_NAME", "simpas2");
 
 /**
